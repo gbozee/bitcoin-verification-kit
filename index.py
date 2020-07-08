@@ -72,11 +72,14 @@ async def bitcoin_api(request: Request):
     result, status_code = await client.async_api_call(data)
     return JSONResponse(result, status_code=status_code)
 
+async def home(request):
+    return JSONResponse({'ehllo':'world'})
 
 app = Starlette(
     debug=DEBUG,
     routes=[
         Route("/", bitcoin_api, methods=["POST"]),
+        Route("/sample", home),
         WebSocketRoute("/ws", nbxplorer_ws, name="nbxplorer_ws"),
     ],
     on_startup=[broadcast.connect],
