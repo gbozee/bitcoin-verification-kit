@@ -1,0 +1,31 @@
+{
+    "env": {
+        "BITCOIN_NODE_URL": "@node_url",
+        "BITCOIN_NODE_USERNAME": "@node_username",
+        "BITCOIN_NODE_PASSWORD": "@node_password",
+        "BITCOIN_TOR_PROXY": "@node_tor_proxy",
+        "CHANNEL_URL": "@channel_url",
+        "NBXPLORER_CREDENTIALS": "@nbxplorer_credentials",
+        "NBXPLORER_URL": "@nbxplorer_url"
+    },
+    "builds": [
+        {
+            "src": "index.py",
+            "use": "@now/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/.*",
+            "dest": "/",
+            "headers": {
+                "cache-control": "s-maxage=604800",
+                "Access-Control-Allow-Origin": "*"
+            }
+        },
+        {}
+    ]
+}

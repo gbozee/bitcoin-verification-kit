@@ -1,0 +1,8 @@
+venv/
+startup.sh
+*.pyc
+__pycache__
+.now
+node_modules
+.pytest_cache
+env
