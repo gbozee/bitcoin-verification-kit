@@ -1,4 +1,4 @@
-from python:3.8
+from python:3.8-alpine
 
 ADD requirements.txt /
 RUN pip install -U pip 

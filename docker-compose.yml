@@ -1,0 +1,25 @@
+version: "3.1"
+
+services:
+  websocket:
+    build:
+      context: "./socket_client"
+      dockerfile: Dockerfile
+    container_name: websocket
+    restart: always
+    command: python /web_sockets.py
+    env_file: ./env/websocket.env
+  
+  web_app:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+    container_name: web_app
+    restart: always
+    env_file: ./env/secrets.env
+    ports:
+      - "0.0.0.0:8003:5000"
+
+  redis:
+    image: redis:alpine
+    restart: always
